@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Architecture Overview | FlagCraft</title>
+<meta name="description" content="Learn how to integrate FlagCraft into your engineering workflow. SDKs, APIs, and best practices."/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "on-secondary-fixed": "#1b1b1e",
+                "surface": "#131315",
+                "surface-dim": "#131315",
+                "on-surface-variant": "#c4c7c8",
+                "on-tertiary-container": "#63646c",
+                "error-container": "#93000a",
+                "primary-fixed-dim": "#c6c6c7",
+                "on-tertiary-fixed-variant": "#45464e",
+                "on-surface": "#e5e1e4",
+                "tertiary-container": "#e2e1eb",
+                "surface-container-lowest": "#0e0e10",
+                "on-primary-fixed-variant": "#454747",
+                "on-primary-fixed": "#1a1c1c",
+                "error": "#ffb4ab",
+                "primary-container": "#e2e2e2",
+                "outline": "#8e9192",
+                "on-secondary-fixed-variant": "#47464a",
+                "primary-fixed": "#e2e2e2",
+                "surface-container-high": "#2a2a2c",
+                "on-secondary-container": "#b6b4b8",
+                "on-primary": "#2f3131",
+                "secondary": "#c8c6c9",
+                "on-secondary": "#303033",
+                "outline-variant": "#444748",
+                "background": "#131315",
+                "on-primary-container": "#636565",
+                "surface-bright": "#39393b",
+                "tertiary-fixed": "#e2e1eb",
+                "on-tertiary-fixed": "#1a1b22",
+                "inverse-on-surface": "#313032",
+                "primary": "#ffffff",
+                "secondary-fixed": "#e4e1e5",
+                "surface-variant": "#353437",
+                "surface-tint": "#c6c6c7",
+                "surface-container-low": "#1c1b1d",
+                "secondary-fixed-dim": "#c8c6c9",
+                "surface-container-highest": "#353437",
+                "secondary-container": "#47464a",
+                "on-error": "#690005",
+                "tertiary-fixed-dim": "#c6c6cf",
+                "surface-container": "#201f22",
+                "on-tertiary": "#2f3037",
+                "tertiary": "#ffffff",
+                "on-background": "#e5e1e4",
+                "on-error-container": "#ffdad6",
+                "inverse-primary": "#5d5f5f",
+                "inverse-surface": "#e5e1e4"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "base": "4px",
+                "md": "1rem",
+                "container-max": "1440px",
+                "xl": "2.5rem",
+                "sm": "0.5rem",
+                "xs": "0.25rem",
+                "lg": "1.5rem",
+                "gutter": "24px"
+        },
+        "fontFamily": {
+                "code": ["Geist"],
+                "body-lg": ["Geist"],
+                "display": ["\"Source Serif 4\""],
+                "label-md": ["Geist"],
+                "headline-md": ["\"Source Serif 4\""],
+                "body-sm": ["Geist"],
+                "body-md": ["Geist"],
+                "headline-lg-mobile": ["\"Source Serif 4\""],
+                "headline-lg": ["\"Source Serif 4\""]
+        },
+        "fontSize": {
+                "code": ["13px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+        }
+      },
+    },
+  }
+</script>
+<style>
+    .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    body {
+        background-color: #131315;
+        color: #e5e1e4;
+    }
+    .nav-notch {
+        position: relative;
+    }
+    .nav-notch::before {
+        content: '';
+        position: absolute;
+        left: -12px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 2px;
+        height: 16px;
+        background-color: #ffffff;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+    .nav-notch.active::before {
+        opacity: 1;
+    }
+    .glass-panel {
+        background: rgba(19, 19, 21, 0.8);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #27272a;
+        border-radius: 10px;
+    }
+</style>
+</head>
+<body class="font-body-md text-body-md antialiased overflow-x-hidden">
+<!-- Top Navigation Shell -->
+<nav class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-outline-variant h-16">
+<div class="max-w-container-max mx-auto px-lg flex items-center justify-between h-full">
+<div class="flex items-center gap-md">
+<a href="index.html" class="flex items-center gap-md">
+<svg class="w-8 h-8 object-contain text-primary" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M14.4 6L14 4H5V21H7V14H12.6L13 16H20V6H14.4Z"/></svg>
+<span class="font-headline-md text-headline-md font-bold tracking-tight text-primary">FlagCraft</span>
+</a>
+<span class="ml-2 font-code text-body-sm text-on-surface-variant bg-surface-container px-2 py-0.5 rounded border border-outline-variant">v2.4.1</span>
+</div>
+<div class="hidden md:flex items-center gap-lg">
+<a class="text-primary font-medium border-b-2 border-primary pb-1 font-body-md text-body-md" href="docs.html">Docs</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="features.html">Product</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="pricing.html">Pricing</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="changelog.html">Changelog</a>
+</div>
+<div class="flex items-center gap-md">
+<a href="https://feature-flag-dashboard-seven.vercel.app/flags" class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md">Log In</a>
+<a href="https://feature-flag-dashboard-seven.vercel.app/flags" class="bg-primary text-on-primary px-4 py-2 rounded font-medium hover:opacity-80 transition-opacity font-body-md text-body-md">Get Started</a>
+</div>
+</div>
+</nav>
+<div class="flex max-w-container-max mx-auto pt-16 min-h-screen">
+<!-- Sidebar Navigation -->
+<aside class="hidden md:block w-72 border-r border-outline-variant h-[calc(100vh-64px)] sticky top-16 overflow-y-auto custom-scrollbar px-lg py-xl">
+<div class="space-y-lg">
+<div>
+<h3 class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant mb-md">Getting Started</h3>
+<ul class="space-y-sm">
+<li><a class="nav-notch flex items-center text-on-surface-variant hover:text-primary transition-colors" href="docs.html">Introduction</a></li>
+<li><a class="nav-notch flex items-center text-on-surface-variant hover:text-primary transition-colors" href="docs-quickstart.html">Quickstart Guide</a></li>
+<li><a class="nav-notch flex items-center text-on-surface-variant hover:text-primary transition-colors" class="nav-notch active flex items-center text-primary font-medium" href="docs-architecture.html">Architecture Overview</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant mb-md">SDKs</h3>
+<ul class="space-y-sm">
+<li><a class="nav-notch flex items-center text-on-surface-variant hover:text-primary transition-colors" href="docs-react.html">React &amp; Next.js</a></li>
+<li><a class="nav-notch flex items-center text-on-surface-variant hover:text-primary transition-colors" href="docs-node.html">Node.js</a></li>
+
+</ul>
+</div>
+<div>
+<h3 class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant mb-md">Management API</h3>
+<ul class="space-y-sm">
+<li><a class="nav-notch flex items-center text-on-surface-variant hover:text-primary transition-colors" href="#">Authentication</a></li>
+<li><a class="nav-notch flex items-center text-on-surface-variant hover:text-primary transition-colors" href="#">Environments</a></li>
+<li><a class="nav-notch flex items-center text-on-surface-variant hover:text-primary transition-colors" href="#">Flag Lifecycle</a></li>
+<li><a class="nav-notch flex items-center text-on-surface-variant hover:text-primary transition-colors" href="#">Rate Limits</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant mb-md">Best Practices</h3>
+<ul class="space-y-sm">
+<li><a class="nav-notch flex items-center text-on-surface-variant hover:text-primary transition-colors" href="#">Cleanup Strategies</a></li>
+<li><a class="nav-notch flex items-center text-on-surface-variant hover:text-primary transition-colors" href="#">Naming Conventions</a></li>
+<li><a class="nav-notch flex items-center text-on-surface-variant hover:text-primary transition-colors" href="#">Testing Toggles</a></li>
+</ul>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 px-lg md:px-xl py-xl overflow-x-hidden">
+<div class="max-w-4xl">
+
+<header class="mb-xl">
+<h1 class="font-headline-lg text-headline-lg text-primary mb-md">Architecture Overview</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+    FlagCraft is built for precision, utilizing deterministic bucketing and conditional polling.
+</p>
+</header>
+<article class="prose prose-invert max-w-none">
+    <h3 class="font-headline-md text-primary mb-sm">Deterministic Bucketing</h3>
+    <p class="text-on-surface-variant mb-md">We use stable hashing (<code class="bg-surface-container-high px-1 rounded text-primary">hash(flag_key + user_id)</code>) to determine flag state. This guarantees a user will consistently see the same flag state, even across sessions, and eliminates "flicker" during progressive rollouts.</p>
+
+    <h3 class="font-headline-md text-primary mb-sm">Conditional Polling (ETags)</h3>
+    <p class="text-on-surface-variant mb-md">Our SDKs poll the edge cache every 30 seconds by default. We use HTTP ETags to ensure that if no flags have changed, the response is a near-instant <code class="bg-surface-container-high px-1 rounded text-primary">304 Not Modified</code> with zero payload, saving bandwidth and compute.</p>
+
+    <h3 class="font-headline-md text-primary mb-sm">Dual Auth Paths</h3>
+    <p class="text-on-surface-variant mb-md">Dashboard authentication is handled securely via Better Auth, while SDK traffic is authenticated via lightweight, environment-specific API Keys for maximum edge performance.</p>
+</article>
+
+</div>
+</main>
+</div>
+<!-- Global Footer -->
+<footer class="w-full bg-background border-t border-outline-variant">
+<div class="max-w-container-max mx-auto px-lg py-xl flex flex-col md:flex-row justify-between items-center gap-md">
+<div class="flex items-center gap-md">
+<a href="index.html" class="flex items-center gap-md">
+<svg class="w-6 h-6 grayscale opacity-60 text-primary" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M14.4 6L14 4H5V21H7V14H12.6L13 16H20V6H14.4Z"/></svg>
+</a>
+<p class="font-body-sm text-body-sm text-on-surface-variant">© 2024 FlagCraft Inc. Built for precision engineering.</p>
+</div>
+<div class="flex gap-lg flex-wrap justify-center">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Terms</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Security</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Status</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Twitter</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">GitHub</a>
+</div>
+</div>
+</footer>
+<script>
+    // Simple Interaction logic for sidebar notches
+    document.querySelectorAll('.nav-notch').forEach(link => {
+        link.addEventListener('click', (e) => {
+            document.querySelectorAll('.nav-notch').forEach(l => l.classList.remove('active', 'text-primary', 'font-medium'));
+            document.querySelectorAll('.nav-notch').forEach(l => l.classList.add('text-on-surface-variant'));
+            
+            link.classList.add('active', 'text-primary', 'font-medium');
+            link.classList.remove('text-on-surface-variant');
+        });
+    });
+
+    // Search shortcut visual cue
+    window.addEventListener('keydown', (e) => {
+        if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+            e.preventDefault();
+            document.querySelector('input[type="text"]').focus();
+        }
+    });
+</script>
+</body>
+</html>

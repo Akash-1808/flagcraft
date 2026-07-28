@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Features Detail | FlagCraft</title>
+<meta name="description" content="Precision Targeting & Multivariate Control. FlagCraft is built for mission-critical deployments."/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.cdnfonts.com/css/geist" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+    }
+    .glass-panel {
+        background: rgba(19, 19, 21, 0.8);
+        backdrop-filter: blur(12px);
+        border: 1px solid #27272a;
+    }
+    .hairline-border {
+        border: 1px solid #27272a;
+    }
+    .glow-active {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+    }
+    .kill-switch-active {
+        background: radial-gradient(circle, rgba(147, 0, 10, 0.2) 0%, transparent 70%);
+    }
+    body {
+        background-color: #09090b;
+        color: #e5e1e4;
+        overflow-x: hidden;
+    }
+    /* Custom scrollbar for IDE feel */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: #09090b; }
+    ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 2px; }
+</style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "on-secondary-fixed": "#1b1b1e",
+                  "surface": "#131315",
+                  "surface-dim": "#131315",
+                  "on-surface-variant": "#c4c7c8",
+                  "on-tertiary-container": "#63646c",
+                  "error-container": "#93000a",
+                  "primary-fixed-dim": "#c6c6c7",
+                  "on-tertiary-fixed-variant": "#45464e",
+                  "on-surface": "#e5e1e4",
+                  "tertiary-container": "#e2e1eb",
+                  "surface-container-lowest": "#0e0e10",
+                  "on-primary-fixed-variant": "#454747",
+                  "on-primary-fixed": "#1a1c1c",
+                  "error": "#ffb4ab",
+                  "primary-container": "#e2e2e2",
+                  "outline": "#8e9192",
+                  "on-secondary-fixed-variant": "#47464a",
+                  "primary-fixed": "#e2e2e2",
+                  "surface-container-high": "#2a2a2c",
+                  "on-secondary-container": "#b6b4b8",
+                  "on-primary": "#2f3131",
+                  "secondary": "#c8c6c9",
+                  "on-secondary": "#303033",
+                  "outline-variant": "#444748",
+                  "background": "#131315",
+                  "on-primary-container": "#636565",
+                  "surface-bright": "#39393b",
+                  "tertiary-fixed": "#e2e1eb",
+                  "on-tertiary-fixed": "#1a1b22",
+                  "inverse-on-surface": "#313032",
+                  "primary": "#ffffff",
+                  "secondary-fixed": "#e4e1e5",
+                  "surface-variant": "#353437",
+                  "surface-tint": "#c6c6c7",
+                  "surface-container-low": "#1c1b1d",
+                  "secondary-fixed-dim": "#c8c6c9",
+                  "surface-container-highest": "#353437",
+                  "secondary-container": "#47464a",
+                  "on-error": "#690005",
+                  "tertiary-fixed-dim": "#c6c6cf",
+                  "surface-container": "#201f22",
+                  "on-tertiary": "#2f3037",
+                  "tertiary": "#ffffff",
+                  "on-background": "#e5e1e4",
+                  "on-error-container": "#ffdad6",
+                  "inverse-primary": "#5d5f5f",
+                  "inverse-surface": "#e5e1e4"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "full": "9999px"
+          },
+          "spacing": {
+                  "base": "4px",
+                  "md": "1rem",
+                  "container-max": "1440px",
+                  "xl": "2.5rem",
+                  "sm": "0.5rem",
+                  "xs": "0.25rem",
+                  "lg": "1.5rem",
+                  "gutter": "24px"
+          },
+          "fontFamily": {
+                  "code": ["Geist"],
+                  "body-lg": ["Geist"],
+                  "display": ["\"Source Serif 4\""],
+                  "label-md": ["Geist"],
+                  "headline-md": ["\"Source Serif 4\""],
+                  "body-sm": ["Geist"],
+                  "body-md": ["Geist"],
+                  "headline-lg-mobile": ["\"Source Serif 4\""],
+                  "headline-lg": ["\"Source Serif 4\""]
+          },
+          "fontSize": {
+                  "code": ["13px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                  "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                  "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                  "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                  "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                  "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                  "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                  "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                  "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+          }
+        },
+      },
+    }
+</script>
+</head>
+<body class="font-body-md text-on-background selection:bg-primary selection:text-background">
+<!-- Top Navigation -->
+<header class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-outline-variant">
+<div class="max-w-container-max mx-auto px-lg flex items-center justify-between h-16">
+<div class="flex items-center gap-sm">
+<a href="index.html" class="flex items-center gap-sm">
+<svg class="w-8 h-8 object-contain text-primary" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M14.4 6L14 4H5V21H7V14H12.6L13 16H20V6H14.4Z"/></svg>
+<span class="font-headline-md text-headline-md font-bold tracking-tight text-primary">FlagCraft</span>
+</a>
+</div>
+<nav class="hidden md:flex items-center gap-lg">
+<a class="font-body-md text-body-md text-primary font-medium border-b-2 border-primary pb-1" href="features.html">Product</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="docs.html">Docs</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="pricing.html">Pricing</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="changelog.html">Changelog</a>
+</nav>
+<div class="flex items-center gap-md">
+<a href="https://feature-flag-dashboard-seven.vercel.app/flags" class="text-body-sm font-body-sm text-on-surface-variant hover:text-primary transition-opacity">Log In</a>
+<a href="https://feature-flag-dashboard-seven.vercel.app/flags" class="bg-primary text-background px-md py-xs rounded font-body-sm text-body-sm font-medium hover:opacity-80 transition-opacity">Get Started</a>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-24">
+<div class="max-w-container-max mx-auto px-lg">
+<!-- Hero Section -->
+<section class="mb-24">
+<div class="max-w-3xl">
+<span class="font-code text-label-md text-on-surface-variant tracking-[0.2em] uppercase mb-md block">Deep Dive</span>
+<h1 class="font-display text-display text-primary mb-lg">Precision Targeting &amp; Multivariate Control</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+    FlagCraft is built for mission-critical deployments. Manage complex rollout logic with granular user attributes, real-time multivariate split testing, and an instant kill-switch architecture designed for absolute safety.
+</p>
+</div>
+</section>
+<!-- Feature Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Deterministic Bucketing Card (Bento Large) -->
+<div class="lg:col-span-8 hairline-border bg-surface-container-lowest p-xl rounded-lg flex flex-col justify-between overflow-hidden relative">
+<div class="relative z-10">
+<div class="flex items-center gap-sm mb-md text-primary">
+<span class="material-symbols-outlined">analytics</span>
+<h2 class="font-headline-md text-headline-md">Deterministic Bucketing</h2>
+</div>
+<p class="font-body-md text-on-surface-variant max-w-lg mb-xl">
+    Stable hash-based rollouts ensure users never flicker between states. Increasing rollout percentage only adds users, never reshuffles them.
+</p>
+</div>
+<!-- Traffic Split Visualization -->
+<div class="mt-auto space-y-6">
+<div class="flex flex-col gap-sm">
+<div class="flex justify-between items-end">
+<span class="font-code text-label-md">Enabled (Feature Active)</span>
+<span class="font-code text-label-md">25.0%</span>
+</div>
+<div class="h-1 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary w-1/4 transition-all duration-700"></div>
+</div>
+</div>
+<div class="flex flex-col gap-sm">
+<div class="flex justify-between items-end">
+<span class="font-code text-label-md">Disabled (Control)</span>
+<span class="font-code text-label-md">75.0%</span>
+</div>
+<div class="h-1 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-surface-bright w-3/4 transition-all duration-700"></div>
+</div>
+</div>
+</div>
+<!-- Decorative Element -->
+<div class="absolute -right-12 -bottom-12 opacity-5 pointer-events-none">
+<span class="material-symbols-outlined" style="font-size: 240px;">rebase_edit</span>
+</div>
+</div>
+<!-- Precision Targeting (Bento Vertical) -->
+<div class="lg:col-span-4 hairline-border bg-surface-container-lowest p-xl rounded-lg flex flex-col">
+<div class="flex items-center gap-sm mb-md text-primary">
+<span class="material-symbols-outlined">gps_fixed</span>
+<h2 class="font-headline-md text-headline-md">Targeting Rules</h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-xl">
+    Define complex boolean logic based on any user attribute.
+</p>
+<!-- Rule Builder Visualization -->
+<div class="flex-grow space-y-md">
+<div class="hairline-border rounded p-md bg-background/50">
+<div class="flex items-center gap-sm mb-sm">
+<span class="font-code text-xs text-on-tertiary-container uppercase tracking-widest">Rule 01</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+</div>
+<code class="font-code text-code text-primary block">
+    IF email <span class="text-on-surface-variant">ENDS_WITH</span> "@company.com"
+</code>
+</div>
+<div class="flex justify-center">
+<span class="font-code text-xs text-on-surface-variant py-xs">AND</span>
+</div>
+<div class="hairline-border rounded p-md bg-background/50">
+<div class="flex items-center gap-sm mb-sm">
+<span class="font-code text-xs text-on-tertiary-container uppercase tracking-widest">Rule 02</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+</div>
+<code class="font-code text-code text-primary block">
+    IF beta_access <span class="text-on-surface-variant">IS</span> true
+</code>
+</div>
+<div class="flex justify-center">
+<span class="font-code text-xs text-on-surface-variant py-xs">OR</span>
+</div>
+<div class="hairline-border border-dashed rounded p-md">
+<span class="font-code text-xs text-on-surface-variant italic">+ Add custom property</span>
+</div>
+</div>
+</div>
+<!-- Auto-Rollback Watcher (Full Width Accent) -->
+<div class="lg:col-span-12 hairline-border bg-surface-container-lowest rounded-lg overflow-hidden grid md:grid-cols-2 group">
+<div class="p-xl flex flex-col justify-center">
+<div class="flex items-center gap-sm mb-md text-error">
+<span class="material-symbols-outlined">monitoring</span>
+<h2 class="font-headline-md text-headline-md">Auto-Rollback Watcher</h2>
+</div>
+<p class="font-body-md text-on-surface-variant mb-xl">
+    Deploy with peace of mind. Our metrics watcher tracks error rates over rolling windows and automatically disables flags without human intervention if an anomaly is detected.
+</p>
+<div class="flex gap-md">
+<button class="px-xl py-md border border-error text-error font-code text-label-md rounded uppercase tracking-[0.2em] hover:bg-error hover:text-white transition-all duration-300" id="kill-switch-btn">
+    Simulate Error Spike
+</button>
+</div>
+</div>
+<div class="relative min-h-[300px] flex items-center justify-center bg-background kill-switch-active overflow-hidden" id="safety-visualization">
+<!-- Animated "Radar" pulses -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="w-24 h-24 border border-error-container rounded-full animate-[ping_2s_infinite]"></div>
+<div class="w-48 h-48 border border-error-container/40 rounded-full animate-[ping_3s_infinite]"></div>
+<div class="w-72 h-72 border border-error-container/20 rounded-full animate-[ping_4s_infinite]"></div>
+</div>
+<div class="z-10 text-center">
+<span class="material-symbols-outlined text-error" style="font-size: 64px;">shield</span>
+<div class="mt-md font-code text-label-md text-error">MONITORING ACTIVE</div>
+<div class="mt-xs font-code text-[10px] text-on-surface-variant opacity-50">ERROR RATE: 0.01%</div>
+</div>
+<!-- Scan lines -->
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-transparent h-32 w-full animate-[bounce_10s_infinite] opacity-10"></div>
+</div>
+</div>
+<!-- Attributes Detail (Code/IDE style) -->
+<div class="lg:col-span-12 hairline-border bg-[#0e0e10] rounded-lg overflow-hidden">
+<div class="flex items-center justify-between px-lg py-md border-b border-outline-variant bg-surface-container-high">
+<div class="flex gap-sm items-center">
+<div class="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
+<div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
+<div class="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+<span class="ml-md font-code text-label-md text-on-surface-variant">flag_definition.yaml</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">content_copy</span>
+</div>
+<div class="p-lg font-code text-code leading-relaxed text-on-surface-variant">
+<p><span class="text-on-tertiary-container"># Define rollout strategies</span></p>
+<p><span class="text-primary">feature_key:</span> <span class="text-tertiary">"new-checkout-flow"</span></p>
+<p><span class="text-primary">state:</span> <span class="text-tertiary">ENABLED</span></p>
+<p><span class="text-primary">targeting:</span></p>
+<p class="pl-md"><span class="text-primary">- name:</span> <span class="text-tertiary">"Internal Team"</span></p>
+<p class="pl-xl"><span class="text-primary">conditions:</span></p>
+<p class="pl-[4rem]"><span class="text-primary">- property:</span> <span class="text-tertiary">"email"</span></p>
+<p class="pl-[4rem]"><span class="text-primary">  operator:</span> <span class="text-tertiary">"ENDS_WITH"</span></p>
+<p class="pl-[4rem]"><span class="text-primary">  value:</span> <span class="text-tertiary">"@flagcraft.com"</span></p>
+<p class="pl-xl"><span class="text-primary">allocation:</span> <span class="text-tertiary">100%</span></p>
+<p class="pl-md"><span class="text-primary">- name:</span> <span class="text-tertiary">"Early Adopters"</span></p>
+<p class="pl-xl"><span class="text-primary">conditions:</span></p>
+<p class="pl-[4rem]"><span class="text-primary">- property:</span> <span class="text-tertiary">"plan"</span></p>
+<p class="pl-[4rem]"><span class="text-primary">  operator:</span> <span class="text-tertiary">"IN"</span></p>
+<p class="pl-[4rem]"><span class="text-primary">  values:</span> <span class="text-tertiary">["enterprise", "pro"]</span></p>
+<p class="pl-xl"><span class="text-primary">allocation:</span> <span class="text-tertiary">25%</span></p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-outline-variant bg-background">
+<div class="max-w-container-max mx-auto px-lg py-xl flex flex-col md:flex-row justify-between items-center gap-md">
+<div class="flex items-center gap-sm">
+<a href="index.html" class="flex items-center gap-sm">
+<svg class="w-6 h-6 grayscale brightness-200 text-primary" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M14.4 6L14 4H5V21H7V14H12.6L13 16H20V6H14.4Z"/></svg>
+<span class="font-headline-md text-headline-md text-primary">FlagCraft</span>
+</a>
+</div>
+<div class="flex gap-lg">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Terms</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Twitter</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">GitHub</a>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">© 2024 FlagCraft Inc. Built for precision engineering.</p>
+</div>
+</footer>
+<script>
+    const killBtn = document.getElementById('kill-switch-btn');
+    const safetyViz = document.getElementById('safety-visualization');
+    let isKillActive = false;
+
+    killBtn.addEventListener('click', () => {
+        isKillActive = !isKillActive;
+        if (isKillActive) {
+            killBtn.innerText = "System Locked: Flag Disabled";
+            killBtn.classList.add('bg-error', 'text-white');
+            safetyViz.innerHTML = `
+                <div class="z-10 text-center animate-pulse">
+                    <span class="material-symbols-outlined text-error" style="font-size: 80px;">lock</span>
+                    <div class="mt-md font-code text-headline-md text-error">THRESHOLD EXCEEDED (> 5%)</div>
+                    <div class="mt-xs font-code text-label-md text-white">FLAG AUTO-DISABLED SUCCESSFULLY</div>
+                </div>
+            `;
+        } else {
+            location.reload(); // Simple way to reset state for demo
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pricing | FlagCraft Precision Feature Management</title>
+<meta name="description" content="Transparent pricing for high-stakes engineering teams. Start free, grow into the enterprise-grade infrastructure your product deserves."/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet"/>
+<style>
+    @font-face {
+        font-family: 'Geist';
+        src: url('https://cdn.jsdelivr.net/gh/vercel/geist-font@v1.3.0/fonts/geist-sans/Geist-Light.woff2') format('woff2');
+        font-weight: 300;
+    }
+    @font-face {
+        font-family: 'Geist';
+        src: url('https://cdn.jsdelivr.net/gh/vercel/geist-font@v1.3.0/fonts/geist-sans/Geist-Regular.woff2') format('woff2');
+        font-weight: 400;
+    }
+    @font-face {
+        font-family: 'Geist';
+        src: url('https://cdn.jsdelivr.net/gh/vercel/geist-font@v1.3.0/fonts/geist-sans/Geist-Medium.woff2') format('woff2');
+        font-weight: 500;
+    }
+    @font-face {
+        font-family: 'Geist';
+        src: url('https://cdn.jsdelivr.net/gh/vercel/geist-font@v1.3.0/fonts/geist-sans/Geist-Bold.woff2') format('woff2');
+        font-weight: 700;
+    }
+
+    body {
+        background-color: #131315;
+        color: #e5e1e4;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .glass-card {
+        background: rgba(19, 19, 21, 0.8);
+        backdrop-filter: blur(12px);
+        border: 1px solid #27272a;
+    }
+
+    .nav-blur {
+        backdrop-filter: blur(12px);
+    }
+
+    .pricing-tier-active {
+        border: 1px solid #ffffff;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+    }
+
+    .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    .comparison-row:hover {
+        background-color: rgba(255, 255, 255, 0.02);
+    }
+</style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "on-secondary-fixed": "#1b1b1e",
+                  "surface": "#131315",
+                  "surface-dim": "#131315",
+                  "on-surface-variant": "#c4c7c8",
+                  "on-tertiary-container": "#63646c",
+                  "error-container": "#93000a",
+                  "primary-fixed-dim": "#c6c6c7",
+                  "on-tertiary-fixed-variant": "#45464e",
+                  "on-surface": "#e5e1e4",
+                  "tertiary-container": "#e2e1eb",
+                  "surface-container-lowest": "#0e0e10",
+                  "on-primary-fixed-variant": "#454747",
+                  "on-primary-fixed": "#1a1c1c",
+                  "error": "#ffb4ab",
+                  "primary-container": "#e2e2e2",
+                  "outline": "#8e9192",
+                  "on-secondary-fixed-variant": "#47464a",
+                  "primary-fixed": "#e2e2e2",
+                  "surface-container-high": "#2a2a2c",
+                  "on-secondary-container": "#b6b4b8",
+                  "on-primary": "#2f3131",
+                  "secondary": "#c8c6c9",
+                  "on-secondary": "#303033",
+                  "outline-variant": "#444748",
+                  "background": "#131315",
+                  "on-primary-container": "#636565",
+                  "surface-bright": "#39393b",
+                  "tertiary-fixed": "#e2e1eb",
+                  "on-tertiary-fixed": "#1a1b22",
+                  "inverse-on-surface": "#313032",
+                  "primary": "#ffffff",
+                  "secondary-fixed": "#e4e1e5",
+                  "surface-variant": "#353437",
+                  "surface-tint": "#c6c6c7",
+                  "surface-container-low": "#1c1b1d",
+                  "secondary-fixed-dim": "#c8c6c9",
+                  "surface-container-highest": "#353437",
+                  "secondary-container": "#47464a",
+                  "on-error": "#690005",
+                  "tertiary-fixed-dim": "#c6c6cf",
+                  "surface-container": "#201f22",
+                  "on-tertiary": "#2f3037",
+                  "tertiary": "#ffffff",
+                  "on-background": "#e5e1e4",
+                  "on-error-container": "#ffdad6",
+                  "inverse-primary": "#5d5f5f",
+                  "inverse-surface": "#e5e1e4"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "full": "9999px"
+          },
+          "spacing": {
+                  "base": "4px",
+                  "md": "1rem",
+                  "container-max": "1440px",
+                  "xl": "2.5rem",
+                  "sm": "0.5rem",
+                  "xs": "0.25rem",
+                  "lg": "1.5rem",
+                  "gutter": "24px"
+          },
+          "fontFamily": {
+                  "code": ["Geist"],
+                  "body-lg": ["Geist"],
+                  "display": ["\"Source Serif 4\""],
+                  "label-md": ["Geist"],
+                  "headline-md": ["\"Source Serif 4\""],
+                  "body-sm": ["Geist"],
+                  "body-md": ["Geist"],
+                  "headline-lg-mobile": ["\"Source Serif 4\""],
+                  "headline-lg": ["\"Source Serif 4\""]
+          },
+          "fontSize": {
+                  "code": ["13px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                  "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                  "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                  "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                  "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                  "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                  "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                  "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                  "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+          }
+        },
+      },
+    }
+</script>
+</head>
+<body class="font-body-md text-body-md bg-background selection:bg-primary selection:text-on-primary">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-outline-variant">
+<div class="max-w-container-max mx-auto px-lg flex items-center justify-between h-16">
+<div class="flex items-center gap-md">
+<a href="index.html" class="flex items-center gap-md">
+<svg class="h-8 w-auto text-primary" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M14.4 6L14 4H5V21H7V14H12.6L13 16H20V6H14.4Z"/></svg>
+<span class="font-headline-md text-headline-md font-bold tracking-tight text-primary">FlagCraft</span>
+</a>
+</div>
+<div class="hidden md:flex items-center gap-xl">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="features.html">Product</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="docs.html">Docs</a>
+<a class="text-primary font-medium border-b-2 border-primary pb-1 font-body-md text-body-md" href="pricing.html">Pricing</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="changelog.html">Changelog</a>
+</div>
+<div class="flex items-center gap-md">
+<a href="https://feature-flag-dashboard-seven.vercel.app/flags" class="text-on-surface hover:opacity-80 transition-opacity font-label-md text-label-md">Log In</a>
+<a href="https://feature-flag-dashboard-seven.vercel.app/flags" class="bg-primary text-on-primary px-md py-xs rounded hover:opacity-90 transition-opacity font-label-md text-label-md font-bold">Get Started</a>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-24 px-md">
+<!-- Hero Section -->
+<section class="max-w-4xl mx-auto text-center mb-24">
+<h1 class="font-display text-display mb-md">Engineered for Precision. Scale with Confidence.</h1>
+<p class="text-on-surface-variant font-body-lg text-body-lg max-w-2xl mx-auto">
+    Transparent pricing for high-stakes engineering teams. Start free, grow into the enterprise-grade infrastructure your product deserves.
+</p>
+</section>
+<!-- Pricing Cards -->
+<section class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-3 gap-lg mb-32">
+<!-- Free Tier -->
+<div class="glass-card p-xl flex flex-col rounded-lg">
+<div class="mb-xl">
+<span class="font-code text-code tracking-widest text-on-surface-variant uppercase">Individual</span>
+<h3 class="font-headline-lg text-headline-lg mt-sm">Free</h3>
+<p class="text-on-surface-variant mt-md font-body-sm text-body-sm min-h-[48px]">Perfect for side projects and individual developers getting started.</p>
+</div>
+<div class="space-y-md mb-xl flex-grow">
+<div class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">check</span>
+<span class="text-on-surface font-body-sm text-body-sm">Up to 5 Flags</span>
+</div>
+<div class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">check</span>
+<span class="text-on-surface font-body-sm text-body-sm">1 Environment</span>
+</div>
+<div class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">check</span>
+<span class="text-on-surface font-body-sm text-body-sm">Basic Targeting</span>
+</div>
+<div class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">check</span>
+<span class="text-on-surface font-body-sm text-body-sm">Standard SDKs</span>
+</div>
+</div>
+<button class="w-full border border-outline-variant text-on-surface py-sm rounded hover:bg-surface-variant transition-all font-label-md text-label-md font-bold">Start for Free</button>
+</div>
+<!-- Pro Tier -->
+<div class="glass-card p-xl flex flex-col rounded-lg pricing-tier-active relative overflow-hidden">
+<div class="absolute top-0 right-0 bg-primary text-on-primary text-[10px] px-sm py-1 font-bold uppercase tracking-widest">Recommended</div>
+<div class="mb-xl">
+<span class="font-code text-code tracking-widest text-on-surface-variant uppercase">Teams</span>
+<h3 class="font-headline-lg text-headline-lg mt-sm">$49<span class="text-on-surface-variant text-body-md">/mo</span></h3>
+<p class="text-on-surface-variant mt-md font-body-sm text-body-sm min-h-[48px]">Complete feature suite for professional engineering squads.</p>
+</div>
+<div class="space-y-md mb-xl flex-grow">
+<div class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">check</span>
+<span class="text-on-surface font-body-sm text-body-sm">Unlimited Flags</span>
+</div>
+<div class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">check</span>
+<span class="text-on-surface font-body-sm text-body-sm">Multiple Environments</span>
+</div>
+<div class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">check</span>
+<span class="text-on-surface font-body-sm text-body-sm">Advanced Targeting Rules</span>
+</div>
+<div class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">check</span>
+<span class="text-on-surface font-body-sm text-body-sm">Stale Flag Detection</span>
+</div>
+<div class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">check</span>
+<span class="text-on-surface font-body-sm text-body-sm">Basic Audit Logs</span>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary py-sm rounded hover:opacity-90 transition-all font-label-md text-label-md font-bold">Start Pro Trial</button>
+</div>
+<!-- Enterprise Tier -->
+<div class="glass-card p-xl flex flex-col rounded-lg">
+<div class="mb-xl">
+<span class="font-code text-code tracking-widest text-on-surface-variant uppercase">Scale</span>
+<h3 class="font-headline-lg text-headline-lg mt-sm">Enterprise</h3>
+<p class="text-on-surface-variant mt-md font-body-sm text-body-sm min-h-[48px]">Security, compliance, and dedicated support for large organizations.</p>
+</div>
+<div class="space-y-md mb-xl flex-grow">
+<div class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">check</span>
+<span class="text-on-surface font-body-sm text-body-sm">SSO &amp; SAML Integration</span>
+</div>
+<div class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">check</span>
+<span class="text-on-surface font-body-sm text-body-sm">Unlimited Environments</span>
+</div>
+<div class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">check</span>
+<span class="text-on-surface font-body-sm text-body-sm">Full Audit Trail &amp; History</span>
+</div>
+<div class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">check</span>
+<span class="text-on-surface font-body-sm text-body-sm">Dedicated Account Manager</span>
+</div>
+<div class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">check</span>
+<span class="text-on-surface font-body-sm text-body-sm">Custom SLA</span>
+</div>
+</div>
+<button class="w-full border border-outline-variant text-on-surface py-sm rounded hover:bg-surface-variant transition-all font-label-md text-label-md font-bold">Contact Sales</button>
+</div>
+</section>
+<!-- Feature Comparison Table -->
+<section class="max-w-container-max mx-auto mb-32 overflow-x-auto">
+<h2 class="font-headline-lg text-headline-lg mb-xl text-center">Detailed Feature Comparison</h2>
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant">
+<th class="py-md pr-xl font-headline-md text-headline-md">Capabilities</th>
+<th class="py-md font-headline-md text-headline-md text-center">Free</th>
+<th class="py-md font-headline-md text-headline-md text-center">Pro</th>
+<th class="py-md font-headline-md text-headline-md text-center">Enterprise</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30">
+<!-- Section: Infrastructure -->
+<tr class="bg-surface-container-low/50">
+<td class="py-xs px-md font-code text-code text-on-surface-variant uppercase tracking-tighter" colspan="4">Infrastructure</td>
+</tr>
+<tr class="comparison-row">
+<td class="py-md pr-xl text-on-surface">Monthly Flag Evaluations</td>
+<td class="py-md text-center text-on-surface-variant">50k</td>
+<td class="py-md text-center text-on-surface">1M</td>
+<td class="py-md text-center text-on-surface font-medium">Unlimited</td>
+</tr>
+<tr class="comparison-row">
+<td class="py-md pr-xl text-on-surface">Environments</td>
+<td class="py-md text-center text-on-surface-variant">1</td>
+<td class="py-md text-center text-on-surface">5</td>
+<td class="py-md text-center text-on-surface font-medium">Unlimited</td>
+</tr>
+<tr class="comparison-row">
+<td class="py-md pr-xl text-on-surface">API Rate Limits</td>
+<td class="py-md text-center text-on-surface-variant">Standard</td>
+<td class="py-md text-center text-on-surface">Burst Capacity</td>
+<td class="py-md text-center text-on-surface font-medium">Dedicated</td>
+</tr>
+<!-- Section: Targeting -->
+<tr class="bg-surface-container-low/50">
+<td class="py-xs px-md font-code text-code text-on-surface-variant uppercase tracking-tighter" colspan="4">Targeting &amp; Delivery</td>
+</tr>
+<tr class="comparison-row">
+<td class="py-md pr-xl text-on-surface">Percentage Rollouts</td>
+<td class="py-md text-center text-primary"><span class="material-symbols-outlined">check</span></td>
+<td class="py-md text-center text-primary"><span class="material-symbols-outlined">check</span></td>
+<td class="py-md text-center text-primary"><span class="material-symbols-outlined">check</span></td>
+</tr>
+<tr class="comparison-row">
+<td class="py-md pr-xl text-on-surface">Attribute-Based Targeting</td>
+<td class="py-md text-center text-on-surface-variant">Basic</td>
+<td class="py-md text-center text-on-surface">Advanced</td>
+<td class="py-md text-center text-on-surface font-medium">Complex Segments</td>
+</tr>
+<tr class="comparison-row">
+<td class="py-md pr-xl text-on-surface">Kill-Switch (Instant Off)</td>
+<td class="py-md text-center text-primary"><span class="material-symbols-outlined">check</span></td>
+<td class="py-md text-center text-primary"><span class="material-symbols-outlined">check</span></td>
+<td class="py-md text-center text-primary"><span class="material-symbols-outlined">check</span></td>
+</tr>
+<!-- Section: Security -->
+<tr class="bg-surface-container-low/50">
+<td class="py-xs px-md font-code text-code text-on-surface-variant uppercase tracking-tighter" colspan="4">Security &amp; Governance</td>
+</tr>
+<tr class="comparison-row">
+<td class="py-md pr-xl text-on-surface">Audit Logs</td>
+<td class="py-md text-center text-on-surface-variant">—</td>
+<td class="py-md text-center text-on-surface">30-day History</td>
+<td class="py-md text-center text-on-surface font-medium">Full Archive</td>
+</tr>
+<tr class="comparison-row">
+<td class="py-md pr-xl text-on-surface">RBAC (Role Based Access Control)</td>
+<td class="py-md text-center text-on-surface-variant">—</td>
+<td class="py-md text-center text-on-surface">Standard</td>
+<td class="py-md text-center text-on-surface font-medium">Granular</td>
+</tr>
+</tbody>
+</table>
+</section>
+<!-- FAQ Section -->
+<section class="max-w-3xl mx-auto mb-32">
+<h2 class="font-headline-lg text-headline-lg mb-xl text-center">Frequently Asked Questions</h2>
+<div class="space-y-lg">
+<div class="border-b border-outline-variant pb-md">
+<button class="flex items-center justify-between w-full text-left group" onclick="toggleFaq(this)">
+<span class="font-headline-md text-headline-md group-hover:text-primary transition-colors">How does evaluation billing work?</span>
+<span class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+</button>
+<div class="mt-md text-on-surface-variant font-body-md text-body-md hidden faq-content">
+    We count an 'evaluation' every time your application requests the state of a flag for a specific user or context. Our SDKs include local caching to ensure these evaluations are lightning-fast and cost-effective.
+</div>
+</div>
+<div class="border-b border-outline-variant pb-md">
+<button class="flex items-center justify-between w-full text-left group" onclick="toggleFaq(this)">
+<span class="font-headline-md text-headline-md group-hover:text-primary transition-colors">Can I switch plans at any time?</span>
+<span class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+</button>
+<div class="mt-md text-on-surface-variant font-body-md text-body-md hidden faq-content">
+    Yes, you can upgrade or downgrade your plan through the FlagCraft dashboard. Changes are prorated for the remainder of your billing cycle.
+</div>
+</div>
+<div class="border-b border-outline-variant pb-md">
+<button class="flex items-center justify-between w-full text-left group" onclick="toggleFaq(this)">
+<span class="font-headline-md text-headline-md group-hover:text-primary transition-colors">What happens if I exceed my Pro limit?</span>
+<span class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+</button>
+<div class="mt-md text-on-surface-variant font-body-md text-body-md hidden faq-content">
+    We won't cut off your service. If you consistently exceed your evaluation limits, we'll reach out to discuss moving to a custom scale plan that better fits your traffic patterns.
+</div>
+</div>
+<div class="border-b border-outline-variant pb-md">
+<button class="flex items-center justify-between w-full text-left group" onclick="toggleFaq(this)">
+<span class="font-headline-md text-headline-md group-hover:text-primary transition-colors">Do you offer on-premise hosting?</span>
+<span class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+</button>
+<div class="mt-md text-on-surface-variant font-body-md text-body-md hidden faq-content">
+    On-premise deployments are available for Enterprise customers only. This includes full Docker/Kubernetes support and private networking configurations.
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="max-w-container-max mx-auto px-lg">
+<div class="bg-primary-container p-xl rounded-xl flex flex-col items-center text-center">
+<h2 class="font-headline-lg text-headline-lg text-on-primary-container mb-md">Ready to optimize your release cycle?</h2>
+<p class="text-on-primary-container/80 max-w-xl mb-xl">Join 2,000+ engineering teams using FlagCraft to deploy faster and with zero risk.</p>
+<div class="flex gap-md">
+<button class="bg-primary text-on-primary px-xl py-md rounded font-label-md text-label-md font-bold hover:opacity-90">Start Free Trial</button>
+<button class="border border-on-primary-container text-on-primary-container px-xl py-md rounded font-label-md text-label-md font-bold hover:bg-on-primary-container/10">Talk to Sales</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-outline-variant bg-background">
+<div class="max-w-container-max mx-auto px-lg py-xl flex flex-col md:flex-row justify-between items-center gap-md">
+<div class="flex items-center gap-md">
+<a href="index.html" class="flex items-center gap-md">
+<svg class="h-6 w-auto grayscale opacity-50 text-primary" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M14.4 6L14 4H5V21H7V14H12.6L13 16H20V6H14.4Z"/></svg>
+<span class="font-headline-md text-headline-md text-primary">FlagCraft</span>
+</a>
+</div>
+<div class="flex gap-xl">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-sm text-body-sm" href="#">Privacy</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-sm text-body-sm" href="#">Terms</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-sm text-body-sm" href="#">Security</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-sm text-body-sm" href="#">Status</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-sm text-body-sm" href="#">Twitter</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-sm text-body-sm" href="#">GitHub</a>
+</div>
+<div class="text-on-surface-variant font-body-sm text-body-sm">
+    © 2024 FlagCraft Inc. Built for precision engineering.
+</div>
+</div>
+</footer>
+<script>
+    function toggleFaq(button) {
+        const content = button.nextElementSibling;
+        const icon = button.querySelector('.material-symbols-outlined');
+        
+        if (content.classList.contains('hidden')) {
+            content.classList.remove('hidden');
+            icon.style.transform = 'rotate(180deg)';
+        } else {
+            content.classList.add('hidden');
+            icon.style.transform = 'rotate(0deg)';
+        }
+    }
+</script>
+</body>
+</html>

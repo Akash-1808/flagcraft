@@ -171,8 +171,26 @@
 <a href="https://feature-flag-dashboard-seven.vercel.app/flags" class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md">Log In</a>
 <a href="https://feature-flag-dashboard-seven.vercel.app/flags" class="bg-primary text-on-primary px-4 py-2 rounded font-medium hover:opacity-80 transition-opacity font-body-md text-body-md">Get Started</a>
 </div>
-</div>
+
+                <button id="mobile-menu-btn" class="md:hidden text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center p-1 ml-2">
+                    <span id="mobile-menu-icon" class="material-symbols-outlined text-2xl">menu</span>
+                </button>
+            </div>
 </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden fixed top-16 left-0 w-full bg-background/95 backdrop-blur-xl border-b border-outline-variant shadow-lg flex-col p-6 gap-4 z-40">
+        <a href="features.html" class="text-on-surface hover:text-primary transition-colors font-headline-md text-headline-md py-2 border-b border-zinc-800/50">Features</a>
+        <a href="docs.html" class="text-on-surface hover:text-primary transition-colors font-headline-md text-headline-md py-2 border-b border-zinc-800/50">SDKs</a>
+        <a href="pricing.html" class="text-on-surface hover:text-primary transition-colors font-headline-md text-headline-md py-2 border-b border-zinc-800/50">Pricing</a>
+        <a href="docs.html" class="text-on-surface hover:text-primary transition-colors font-headline-md text-headline-md py-2 border-b border-zinc-800/50">Docs</a>
+        <a href="https://github.com/Akash-1808/flagcraft" target="_blank" class="text-on-surface hover:text-primary transition-colors font-headline-md text-headline-md py-2 border-b border-zinc-800/50">GitHub</a>
+        <a href="https://www.npmjs.com/package/flagcraft" target="_blank" class="text-on-surface hover:text-primary transition-colors font-headline-md text-headline-md py-2 border-b border-zinc-800/50">npm</a>
+        <div class="pt-4 flex flex-col gap-3">
+            <a href="https://feature-flag-dashboard-seven.vercel.app/flags" class="w-full text-center border border-outline-variant text-on-surface-variant px-md py-sm rounded font-label-md text-label-md font-bold hover:bg-white/5 transition-colors">Log In</a>
+        </div>
+    </div>
+
 <div class="flex max-w-container-max mx-auto pt-16 min-h-screen">
 <!-- Sidebar Navigation -->
 <aside class="hidden md:block w-72 border-r border-outline-variant h-[calc(100vh-64px)] sticky top-16 overflow-y-auto custom-scrollbar px-lg py-xl">
@@ -275,5 +293,26 @@
         }
     });
 </script>
+
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+        
+        if (mobileMenuBtn && mobileMenu && mobileMenuIcon) {
+            mobileMenuBtn.addEventListener('click', () => {
+                if (mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.remove('hidden');
+                    mobileMenu.classList.add('flex');
+                    mobileMenuIcon.textContent = 'close';
+                } else {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('flex');
+                    mobileMenuIcon.textContent = 'menu';
+                }
+            });
+        }
+    </script>
+
 </body>
 </html>
